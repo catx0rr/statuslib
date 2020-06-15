@@ -11,7 +11,7 @@ class Imprinter:
         self.time = date.now().strftime("%Y-%m-%d %H:%M:%S")
 
         self.art = dict(
-            log='[v]:',
+            log='[v]',
             info='[i]',
             success='[+]',
             failed='[-]',
@@ -74,19 +74,26 @@ class Imprinter:
         log = self.log
         time = '%s%s%s' % ('[', self.time, ']')
 
+        # print(kwargs)
+        # import sys
+        # sys.exit()
+
         # Return values from art or log
         def iterobj_handler(name, text, string, logging, dic):
 
             for item, value in dic.items():
 
-                if name is None:
-                    return string
+                if name is None and logging is True:
+                    return time, string
 
                 if name == item and logging is False:
                     return value, string
 
                 if name == item and logging is True:
                     return value, time, string
+
+                if name is None:
+                    return string
 
                 if name not in dic:
                     raise ValueError('Keyword value is not in the list')
@@ -96,6 +103,9 @@ class Imprinter:
 
             if customize:
                 raise TypeError('Unexpected customized keyword argument')
+
+            if name is None and logging is True:
+                return (' '.join(str(value) for value in self.raw_imprint()))
 
             if name is None:
                 return string
@@ -114,20 +124,23 @@ class Imprinter:
                 # Char / Art indicators value
                 return iterobj_handler(name, text, string, logging, art)
 
-            if name or name is None and text is True:
+            if name and text is True:
 
                 # Text indicators value
                 return iterobj_handler(name, text, string, logging, log)
 
-            if text is True:
+            if name is None and logging is True:
 
-                # Text indicators value
+                # Timestamp logging without indicators
                 return iterobj_handler(name, text, string, logging, log)
 
-            if logging is True:
+            if name is None and logging is False:
 
-                # Logging added to indicators
-                return iterobj_handler(name, text, string, logging, log)
+                if text is True:
+                    return iterobj_handler(name, text, string, logging, log)
+
+                else:
+                    return iterobj_handler(name, text, string, logging, log)
 
     def imprint(self):
 
@@ -283,7 +296,7 @@ class status:
                 colorizer = Colorizer(logger, color=color)
                 return ('%s %s' % (colorizer.colorize(), string))
 
-            else:
+            if logging is True:
 
                 imprinter = Imprinter(message, code=code, text=text, logging=logging)
                 logger, time, string = imprinter.raw_imprint()
