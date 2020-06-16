@@ -4,6 +4,7 @@ Status Indicators on print statements for your python script.
 ---
 
 # Usage:
+import statuslib
 from statuslib import status
 
 
@@ -18,7 +19,7 @@ from statuslib import status
 
 ## Arguments
 
-- Default code arguments:
+- Default string code arguments:
     - info
     - success
     - failed
@@ -34,16 +35,16 @@ from statuslib import status
 
 - Methods:
     - custom_imprint and custom_code method 
-        - ```x = Imprinter(string, code=strarg, text=bool, customize=string logging=bool)```
+        - ```x = Imprinter(string, code=code, text=bool, customize=string logging=bool)```
         - ```x.custom_imprint()```
         - ```x.custom_code()```
 
     - imprint method
-        - ``` x = Imprinter(string, code=strarg, text=bool, logging=bool)```
+        - ``` x = Imprinter(string, code=code, text=bool, logging=bool)```
         - ```x.imprint()```
 
     - raw_imprint method
-        - ``` x = Imprinter(string, code=strarg, text=bool, logging=bool)```
+        - ``` x = Imprinter(string, code=code, text=bool, logging=bool)```
         - ```returns tuple of the output```
 
 ### Colorizer Class
@@ -68,9 +69,19 @@ from statuslib import status
     - <span style="color:#808080">b_gray</span>
     - <span style="color:#000000">b_white</span>
 
+- Custom colors:
+    - ```c=0; for i in {0..255}; do if [ $c == 12 ]; then echo; c=0; else printf "\x1b[38;5;${i}mcolor${i}\033[00m"; ((c++)); fi; done```
+
+---
+- Custom color pallete
+
+![color pallete](https://github.com/catx0rr/statuslib/blob/master/img/colors.PNG)
+---
+
+
 - Methods:
     - colorize method
-        - ``` x = Colorizer(string, color=strarg)```
+        - ``` x = Colorizer(string, color=color)```
         - ``` x.colorize()```
 
 ---
@@ -85,7 +96,7 @@ from statuslib import status
 
 ---
 
-![complete loggin](https://github.com/catx0rr/statuslib/blob/master/img/complete_logging.PNG)
+![complete logging](https://github.com/catx0rr/statuslib/blob/master/img/complete_logging.PNG)
 
 ---
 
