@@ -33,7 +33,10 @@ class Imprinter:
         )
 
     def _print_class(self, **kwargs):
-        art, log, used, string = kwargs['art'], kwargs['log'], kwargs['used'], kwargs['string']
+        art = kwargs['art']
+        log = kwargs['log']
+        used = kwargs['used']
+        string = kwargs['string']
 
         return ('<Status Art: %s>\n<Status Text: %s>\n<Used: %s>\n<String: %s>' % (art,
                                                                                    log,
@@ -74,9 +77,6 @@ class Imprinter:
         log = self.log
         time = '%s%s%s' % ('[', self.time, ']')
 
-        # print(kwargs)
-        # import sys
-        # sys.exit()
 
         # Return values from art or log
         def iterobj_handler(name, text, string, logging, dic):

@@ -4,8 +4,8 @@ Status Indicators on print statements for your python script.
 ---
 
 # Usage:
-import statuslib
-from statuslib import status
+- import statuslib
+- from statuslib import status
 
 
 ## Static methods for status Class
@@ -70,8 +70,7 @@ Bold colors:
 - <span style="color:#000000">b_white</span>
 
 Custom colors:
-- ```c=0; for i in {0..255}; do if [ $c == 12 ]; then echo; c=0; else printf "\x1b[38;5;${i}mcolor${i}\033[00m"; ((c++)); fi; done```
-
+```c=1; for i in {1..255}; do printf "\x1b[38;5;${i}mcolour${i}\x1b[0m "; if [ $c -eq 10 ]; then echo; c=1; fi; let c++; done``` 
 ---
 Custom color pallete
 
