@@ -69,7 +69,8 @@ Bold colors:
 - <span style="color:#808080">b_gray</span>
 - <span style="color:#000000">b_white</span>
 
-Custom colors:
+### Custom colors:
+
 ```c=1; for i in {1..255}; do printf "\x1b[38;5;${i}mcolour${i}\x1b[0m "; if [ $c -eq 10 ]; then echo; c=1; fi; let c++; done``` 
 ---
 Custom color pallete
@@ -85,7 +86,7 @@ Methods:
 
 ---
 
-# Sample Image
+## Sample Image
 
 ![status messages](https://github.com/catx0rr/statuslib/blob/master/img/sample.PNG)
 
@@ -99,7 +100,7 @@ Methods:
 
 ---
 
-# Known Issues
+## Known Issues
 
 - Does not support windows cmd and ps shells yet for text colorization. 
 - Works perfectly on Bash shells (Mac / Linux)
