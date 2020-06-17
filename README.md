@@ -26,7 +26,7 @@ Default string code arguments:
 - working
 - warning
 
-### Imprinter Class
+## Imprinter Class
 
 Additional arguments that can be used graphically:
 - shell
@@ -47,7 +47,7 @@ Methods:
     - ``` x = Imprinter(string, code=code, text=bool, logging=bool)```
     - ```returns tuple of the output```
 
-### Colorizer Class
+## Colorizer Class
 
 Available colors:
 - <span style="color:#00FFFF">cyan</span>
@@ -69,9 +69,8 @@ Bold colors:
 - <span style="color:#808080">b_gray</span>
 - <span style="color:#000000">b_white</span>
 
-### Custom colors:
-
-```c=1; for i in {1..255}; do printf "\x1b[38;5;${i}mcolour${i}\x1b[0m "; if [ $c -eq 10 ]; then echo; c=1; fi; let c++; done``` 
+## Custom colors:
+- ```c=1; for i in {1..255}; do printf "\x1b[38;5;${i}mcolour${i}\x1b[0m "; if [ $c -eq 10 ]; then echo; c=1; fi; let c++; done``` 
 ---
 Custom color pallete
 
